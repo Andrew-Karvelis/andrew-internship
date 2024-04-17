@@ -24,6 +24,8 @@ const Author = () => {
       });
   }, [authorId]);
 
+
+
   const toggleFollow = () => {
     if (isFollowing) {
       setAuthor(prevAuthor => ({
@@ -100,7 +102,7 @@ const Author = () => {
 
               <div className="col-md-12">
                 <div className="de_tab tab_simple">
-                  <AuthorItems author={author}/>
+                  <AuthorItems author={author} />
                 </div>
               </div>
             </div>

@@ -2,18 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Countdown from "./Countdown";
 
-function Card({ item, authorImage }) {
+function Card({ item, authorImage, authorId }) {
 
   return (
         <div className="nft__item">
           <div className="author_list_pp">
             <Link
-              to={`/author/${item.authorId}`}
+              to={`/author/${item.authorId || authorId.authorId}`}
               data-bs-toggle="tooltip"
               data-bs-placement="top"
-              title={`Creator: ${item.authorId}`}
+              title={`Creator: ${item.authorId || authorId.authorName}`}
             >
-              {authorImage && <img className="lazy" src={item.authorImage || authorImage} alt="" />}
+              <img className="lazy" src={item.authorImage || authorImage} alt="" />
               <i className="fa fa-check"></i>
             </Link>
           </div>
