@@ -9,8 +9,6 @@ const Author = () => {
   const [author, setAuthor] = useState(null);
   const [isFollowing, setIsFollowing] = useState(false);
 
-
-
   useEffect(() => {
     axios
       .get(
@@ -24,28 +22,24 @@ const Author = () => {
       });
   }, [authorId]);
 
-
-
   const toggleFollow = () => {
     if (isFollowing) {
-      setAuthor(prevAuthor => ({
+      setAuthor((prevAuthor) => ({
         ...prevAuthor,
-        followers: prevAuthor.followers - 1
-      }))
+        followers: prevAuthor.followers - 1,
+      }));
       setIsFollowing(false);
-    }
-    else {
-      setAuthor(prevAuthor => ({
+    } else {
+      setAuthor((prevAuthor) => ({
         ...prevAuthor,
-        followers: prevAuthor.followers + 1
-      }))
-      setIsFollowing(true)
+        followers: prevAuthor.followers + 1,
+      }));
+      setIsFollowing(true);
     }
-  }
-
+  };
 
   if (author === null) {
-    return <div>loading...</div>
+    return <div>loading...</div>;
   }
 
   return (
@@ -64,41 +58,49 @@ const Author = () => {
         <section aria-label="section">
           <div className="container">
             <div className="row">
-                <div className="col-md-12">
-                  <div className="d_profile de-flex">
-                    <div className="de-flex-col">
-                      <div className="profile_avatar">
-                        <img src={author.authorImage} alt="" />
+              <div className="col-md-12">
+                <div className="d_profile de-flex">
+                  <div className="de-flex-col">
+                    <div
+                      className="profile_avatar"
+                      data-aos="fade-left"
+                      data-aos-easing="ease-in"
+                      data-aos-duration="500"
+                    >
+                      <img src={author.authorImage} alt="" />
 
-                        <i className="fa fa-check"></i>
-                        <div className="profile_name">
-                          <h4>
-                            {author.authorName}
-                            <span className="profile_username">
-                              @{author.tag}
-                            </span>
-                            <span id="wallet" className="profile_wallet">
-                              {author.address}
-                            </span>
-                            <button id="btn_copy" title="Copy Text">
-                              Copy
-                            </button>
-                          </h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="profile_follow de-flex">
-                      <div className="de-flex-col">
-                        <div className="profile_follower">
-                          {author.followers}
-                        </div>
-                        <Link to="#" className="btn-main" onClick={toggleFollow}>
-                          {isFollowing ? "Unfollow" : "Follow"}
-                        </Link>
+                      <i className="fa fa-check"></i>
+                      <div className="profile_name">
+                        <h4>
+                          {author.authorName}
+                          <span className="profile_username">
+                            @{author.tag}
+                          </span>
+                          <span id="wallet" className="profile_wallet">
+                            {author.address}
+                          </span>
+                          <button id="btn_copy" title="Copy Text">
+                            Copy
+                          </button>
+                        </h4>
                       </div>
                     </div>
                   </div>
+                  <div className="profile_follow de-flex">
+                    <div
+                      className="de-flex-col"
+                      data-aos="fade-in"
+                      data-aos-easing="ease-in"
+                      data-aos-duration="500"
+                    >
+                      <div className="profile_follower">{author.followers}</div>
+                      <Link to="#" className="btn-main" onClick={toggleFollow}>
+                        {isFollowing ? "Unfollow" : "Follow"}
+                      </Link>
+                    </div>
+                  </div>
                 </div>
+              </div>
 
               <div className="col-md-12">
                 <div className="de_tab tab_simple">
