@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import EthImage from "../images/ethereum.svg";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Skeleton from "../components/UI/Skeleton";
+import SkeletonItem from "../components/UI/SkeletonItem";
 
 const ItemDetails = () => {
   const { itemId } = useParams();
@@ -45,7 +47,7 @@ const ItemDetails = () => {
         <section aria-label="section" className="mt90 sm-mt-0">
           <div className="container">
             {loading ? (
-              <p>Loading...</p>
+              <SkeletonItem />
             ) : (
               Object.keys(items).length > 0 && (
                 <div className="row">
