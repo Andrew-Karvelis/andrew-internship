@@ -12,6 +12,7 @@ const ItemDetails = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    //animations
   }, []);
 
   useEffect(() => {
@@ -56,9 +57,18 @@ const ItemDetails = () => {
                       src={items.nftImage}
                       className="img-fluid img-rounded mb-sm-30 nft-image"
                       alt=""
+                      data-aos="fade-in"
+                      data-aos-easing="ease-in"
+                      data-aos-duration="500"
                     />
                   </div>
-                  <div className="col-md-6">
+                  <div
+                    className="col-md-6"
+                    data-aos="fade-left"
+                    data-aos-easing="ease-in"
+                    data-aos-delay='550'
+                    data-aos-duration="500"
+                  >
                     <div className="s_info">
                       <h2>
                         {items.title} #{items.tag}

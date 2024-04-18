@@ -2,8 +2,8 @@ import React from "react";
 import SkeletonCard from "../UI/SkeletonCard";
 import Card from "../UI/Card";
 
-const AuthorItems = ({ author}) => {
-  const loading = !author || (!Array.isArray(author.nftCollection));
+const AuthorItems = ({ author }) => {
+  const loading = !author || !Array.isArray(author.nftCollection);
   return (
     <div className="de_tab_content">
       <div className="tab-1">
@@ -26,11 +26,17 @@ const AuthorItems = ({ author}) => {
                   <div
                     className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
                     key={nft.id}
+                    data-aos="fade-in"
+                    data-aos-easing="ease-in"
+                    data-aos-duration="800"
                   >
-                    <Card item={nft} authorImage={author.authorImage} authorId={author}/>
+                    <Card
+                      item={nft}
+                      authorImage={author.authorImage}
+                      authorId={author}
+                    />
                   </div>
                 ))}
-
               </div>
             </div>
           )}
